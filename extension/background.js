@@ -1,8 +1,20 @@
 async function fetchArchiveUrl(url) {
-  const response = await fetch(`https://archive.is/newest/${encodeURIComponent(url)}`, {
-    redirect: 'follow'
-  });
-  return response.url; // final redirected url is the snapshot
+  const domains = ['https://archive.is', 'https://archive.ph'];
+  let lastError = 'Unable to fetch archive URL';
+  for (const domain of domains) {
+    try {
+      const resp = await fetch(`${domain}/newest/${encodeURIComponent(url)}`, {
+        redirect: 'follow'
+      });
+      if (resp.ok) {
+        return resp.url; // final redirected url is the snapshot
+      }
+      lastError = `${domain} responded ${resp.status}`;
+    } catch (err) {
+      lastError = err.message;
+    }
+  }
+  throw new Error(lastError);
 }
 
 async function saveToReadwise(snapshotUrl, token) {
