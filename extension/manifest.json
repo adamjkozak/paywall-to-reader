@@ -1,21 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Paywall to Reader",
-  "description": "Archive a page and save it to Readwise Reader",
-  "version": "1.0",
+  "name": "Archive Opener",
+  "description": "Open the most recent archived version of the current page",
+  "version": "1.1",
   "action": {},
   "permissions": [
-    "storage",
     "activeTab",
     "tabs"
   ],
   "host_permissions": [
     "https://archive.is/*",
-    "https://archive.ph/*",
-    "https://readwise.io/*"
+    "https://archive.ph/*"
   ],
   "background": {
     "service_worker": "background.js"
-  },
-  "options_page": "options.html"
+  }
 }
