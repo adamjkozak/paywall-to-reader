@@ -3,12 +3,11 @@
   "name": "Paywall to Reader",
   "description": "Archive a page and save it to Readwise Reader",
   "version": "1.0",
-  "action": {
-    "default_popup": "popup.html"
-  },
+  "action": {},
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "tabs"
   ],
   "host_permissions": [
     "https://archive.is/*",
